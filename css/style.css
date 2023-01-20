@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.center {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+section {
+    min-height: 100vh;
+    padding: 150px 50px;
+}
+
+.header {
+    padding: 15px;
+    background: rgb(100, 100, 200);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+}
+
+.form {
+    display: flex;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.app_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.app_input input {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.app_btn {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    background: rgb(20, 155, 30);
+    color: #fff;
+    cursor: pointer;
+}
+
+#homeTasks {
+    background: rgb(45, 187, 223);
+}
+
+#workTasks {
+    background: rgb(47, 34, 228);
+}
+
+#shoppingList {
+    background: rgb(231, 220, 58);
+}
+
+.list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.remove {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(145, 35, 35);
+    color: #fff;
+    font-size: 24px;
+    border: none;
+}
+
+.list li input:checked + * {
+    text-decoration: line-through;
+}

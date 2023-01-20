@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>ToDo & Shopping Lists</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header_inner center">
+                <a class="logo" href="index.html">My Lists</a>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#">Home tasks</a></li>
+                        <li><a href="#">Work tasks</a></li>
+                        <li><a href="#">Shopping list</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section class="center list" id="homeTasks">
+            <form class="form">
+                <label class="app_input">
+                    Home Task
+                    <input type="text" name="homeTaskName" />
+                </label>
+                <button class="app_btn" type="submit">+ Add home task</button>
+            </form>
+            <ol class="list"></ol>
+        </section>
+        <section class="center list" id="workTasks">
+            <form class="form">
+                <label class="app_input">
+                    Work Task
+                    <input type="text" name="workTaskName" />
+                </label>
+                <label class="app_input">
+                    Deadline
+                    <input type="date" name="workTaskDeadline" />
+                </label>
+                <button class="app_btn" type="submit">+ Add work task</button>
+            </form>
+            <ol class="list"></ol>
+        </section>
+        <section class="center list" id="shoppingList">
+            <form class="form">
+                <label class="app_input">
+                    Product
+                    <input type="text" name="shoppingItemName" />
+                </label>
+                <label class="app_input">
+                    Link to product
+                    <input type="url" name="shoppingItemLink" />
+                </label>
+                <button class="app_btn" type="submit">
+                    + Add to shopping list
+                </button>
+            </form>
+            <ol class="list"></ol>
+        </section>
+        <script src="js/modules/List.js"></script>
+        <script src="js/modules/Item.js"></script>
+        <script src="js/modules/WorkTask.js"></script>
+        <script src="js/modules/ShoppingList.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
