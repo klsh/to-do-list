@@ -1,6 +1,6 @@
 class WorkTask extends Item {
     constructor(text, deadline, id) {
-        super(text);
+        super(text, id);
         this.deadline = deadline;
     }
 }

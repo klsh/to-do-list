@@ -4,61 +4,53 @@ class List {
         this.section = document.querySelector(section);
         this.form = this.section.querySelector("form");
         this.list = this.section.querySelector(".list");
-
         this.items = [];
     }
 
-    addItem() {
+    init() {
+        if (localStorage.getItem(this.name)) {
+            this.items = JSON.parse(localStorage.getItem(this.name));
+
+            this.items.forEach((item) => {
+                this.drawItem(item);
+            });
+        }
         this.form.addEventListener("submit", (event) => {
             event.preventDefault();
-
-            if (this.name === "homeTasks") {
-                Array.from(event.target.elements).forEach((input) => {
-                    if (input.tagName.toLowerCase() === "input") {
-                        this.items.push(
-                            new Item(input.value, this.items.length)
-                        );
-                        this.drawItems(
-                            new Item(input.value, this.items.length)
-                        );
-                    }
-                });
-            } else if (this.name === "workTasks") {
-                this.items.push(
-                    new WorkTask(
-                        event.target.elements[0].value,
-                        event.target.elements[1].value
-                    )
-                );
-                this.drawItems(
-                    new WorkTask(
-                        event.target.elements[0].value,
-                        event.target.elements[1].value,
-                        this.items.length
-                    )
-                );
-            } else if (this.name === "shoppingList") {
-                this.items.push(
-                    new ShoppingList(
-                        event.target.elements[0].value,
-                        event.target.elements[1].value,
-                        this.items.length
-                    )
-                );
-                this.drawItems(
-                    new ShoppingList(
-                        event.target.elements[0].value,
-                        event.target.elements[1].value,
-                        this.items.length
-                    )
-                );
-            }
+            this.addItem();
             event.target.reset();
         });
     }
 
-    drawItems(item) {
+    addItem() {
+        let elems = event.target.elements;
+        if (this.name === "homeTasks") {
+            let item = new Item(elems[0].value, this.items.length);
+            this.drawItem(item);
+            this.items.push(item);
+        } else if (this.name === "workTasks") {
+            let item = new WorkTask(
+                elems[0].value,
+                elems[1].value,
+                this.items.length
+            );
+            this.drawItem(item);
+            this.items.push(item);
+        } else if (this.name === "shoppingList") {
+            let item = new ShoppingTask(
+                elems[0].value,
+                elems[1].value,
+                this.items.length
+            );
+            this.drawItem(item);
+            this.items.push(item);
+        }
+        this.addToLocalStorage();
+    }
+
+    drawItem(item) {
         let li = document.createElement("li");
+        li.id = item.id;
         this.addChecker(li, item.id);
 
         if (this.name === "workTasks") {
@@ -76,7 +68,8 @@ class List {
             link.innerText = item.text;
             li.appendChild(link);
         }
-
+        this.addEditBtn(li, item.id);
+        this.addDeleteBtn(li, item.id);
         this.list.appendChild(li);
     }
 
@@ -85,10 +78,74 @@ class List {
         checker.setAttribute("type", "checkbox");
 
         checker.addEventListener("input", () => {
-            this.items[id - 1].done = !this.items[id - 1].done;
-            console.log(this.items);
+            let index = this.items.findIndex((item) => item.id === id);
+            if (index >= 0) {
+                this.items[id].done = !this.items[id].done;
+            }
         });
 
         parent.appendChild(checker);
+    }
+
+    addDeleteBtn(parent, id) {
+        let btn = document.createElement("button");
+        btn.setAttribute("type", "button");
+        btn.classList.add("remove_item");
+        btn.setAttribute("data-id-to-remove", id);
+        btn.innerHTML = "&times;";
+
+        btn.addEventListener("click", () => {
+            let index = this.items.findIndex((item) => item.id === id);
+
+            if (index >= 0) {
+                this.items.splice(index, 1);
+                event.target.closest("li").remove();
+                this.addToLocalStorage();
+            }
+        });
+
+        parent.appendChild(btn);
+    }
+
+    addEditBtn(parent, id) {
+        let btn = document.createElement("button");
+        btn.setAttribute("type", "button");
+        btn.classList.add("edit_item");
+        btn.setAttribute("data-id-to-edit", id);
+        btn.innerHTML = "Edit";
+
+        btn.addEventListener("click", () => {
+            let index = this.items.findIndex((item) => item.id === id);
+            if (index >= 0) {
+                this.startEdit(this.items[index], id);
+            }
+        });
+        parent.appendChild(btn);
+    }
+
+    startEdit(item, id) {
+        let inputs = event.target
+            .closest(".list_wrap")
+            .querySelector(".form").elements;
+
+        for (let key in item) {
+            if (inputs[key]) {
+                inputs[key].value = item[key];
+            }
+        }
+
+        let btn = Array.from(inputs).find(
+            (item) => item.tagName.toLowerCase() === "button"
+        );
+        btn.innerText = btn.innerText.replace("Add", "Edit");
+        console.log(btn);
+    }
+
+    addToLocalStorage() {
+        if (checkStorage("localStorage")) {
+            localStorage[this.name] = JSON.stringify(this.items);
+        } else {
+            alert("Trouble with Local Storage");
+        }
     }
 }

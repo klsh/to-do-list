@@ -26,50 +26,53 @@
                 </nav>
             </div>
         </header>
-        <section class="center list" id="homeTasks">
+        <section class="center list_wrap" id="homeTasks">
             <form class="form">
                 <label class="app_input">
                     Home Task
-                    <input type="text" name="homeTaskName" />
+                    <input type="text" name="text" />
                 </label>
+                <input type="hidden" name="id" />
                 <button class="app_btn" type="submit">+ Add home task</button>
             </form>
             <ol class="list"></ol>
         </section>
-        <section class="center list" id="workTasks">
-            <form class="form">
-                <label class="app_input">
-                    Work Task
-                    <input type="text" name="workTaskName" />
-                </label>
-                <label class="app_input">
-                    Deadline
-                    <input type="date" name="workTaskDeadline" />
-                </label>
-                <button class="app_btn" type="submit">+ Add work task</button>
-            </form>
-            <ol class="list"></ol>
-        </section>
-        <section class="center list" id="shoppingList">
+        <section class="center list_wrap" id="shoppingList">
             <form class="form">
                 <label class="app_input">
                     Product
-                    <input type="text" name="shoppingItemName" />
+                    <input type="text" name="text" />
                 </label>
                 <label class="app_input">
                     Link to product
-                    <input type="url" name="shoppingItemLink" />
+                    <input type="url" name="url" />
                 </label>
+                <input type="hidden" name="id" />
                 <button class="app_btn" type="submit">
                     + Add to shopping list
                 </button>
             </form>
             <ol class="list"></ol>
         </section>
+        <section class="center list_wrap" id="workTasks">
+            <form class="form">
+                <label class="app_input">
+                    Work Task
+                    <input type="text" name="text" />
+                </label>
+                <label class="app_input">
+                    Deadline
+                    <input type="date" name="deadline" />
+                </label>
+                <input type="hidden" name="id" />
+                <button class="app_btn" type="submit">+ Add work task</button>
+            </form>
+            <ol class="list"></ol>
+        </section>
         <script src="js/modules/List.js"></script>
         <script src="js/modules/Item.js"></script>
         <script src="js/modules/WorkTask.js"></script>
-        <script src="js/modules/ShoppingList.js"></script>
+        <script src="js/modules/ShoppingTask.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
