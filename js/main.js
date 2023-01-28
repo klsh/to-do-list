@@ -1,43 +1,10 @@
-// let workTask = new WorkTask("workTask", "Work task description", "18-12-22");
-// let toBuy = new ShoppingTask(
-//     "shoppingTask",
-//     "Shopping task description",
-//     "google.com"
-// );
-
-// console.log(workTask);
-// console.log(toBuy);
-
-// let myLists = {
-//     homeTasks: [],
-//     workTasks: [],
-//     shoppingList: [],
-//     createItem: function () {},
-//     addItem: function () {},
-// };
-
-// let homeForm = document.querySelector("#homeTasks .form");
-
 let homeTasksList = new List("homeTasks", "#homeTasks");
-let workTasksList = new List("workTasks", "#workTasks");
 let shoppingList = new List("shoppingList", "#shoppingList");
+let workTasksList = new List("workTasks", "#workTasks");
 
 homeTasksList.init();
-workTasksList.init();
 shoppingList.init();
-
-// document.querySelector(".test_storage").onclick = () => {
-//     console.log("test");
-
-//     localStorage.setItem("testItemName", "test item value for local storage");
-//     sessionStorage.setItem(
-//         "testItemName",
-//         "test item value for session storage"
-//     );
-
-//     localStorage.removeItem("testItemName");
-//     sessionStorage.removeItem("testItemName");
-// };
+workTasksList.init();
 
 function checkStorage(type) {
     try {
@@ -51,19 +18,8 @@ function checkStorage(type) {
     }
 }
 
-// checkStorage("localStorage");
-// checkStorage("sessionStorage");
+let counter = new Counter(document.querySelector('[name="counter_num"]'));
+counter.init();
 
-// if (checkStorage("localStorage")) {
-//     // что-то делать
-//     console.log("OK");
-// } else {
-//     // видать сообщение, что сторадж не работает и сайт может работать некорректно
-//     console.error("Not OK");
-// }
-
-// localStorage["newItem1"] = "test new item";
-// localStorage.newItem2 = "test new item";
-// localStorage.setItem("itemName3", "item value");
-
-// localStorage.clear();
+let watch = new StopWatch(document.querySelector('[name="stopwatch_num"]'));
+watch.init();

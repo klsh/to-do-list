@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Roboto:wght@400;700&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="css/style.css" />
@@ -19,9 +19,20 @@
                 <a class="logo" href="index.html">My Lists</a>
                 <nav class="nav">
                     <ul>
-                        <li><a href="#">Home tasks</a></li>
-                        <li><a href="#">Work tasks</a></li>
-                        <li><a href="#">Shopping list</a></li>
+                        <li>
+                            <a href="#homeTasks" class="nav_link">Home tasks</a>
+                        </li>
+                        <li>
+                            <a href="#shoppingList" class="nav_link"
+                                >Shopping list</a
+                            >
+                        </li>
+                        <li>
+                            <a href="#workTasks" class="nav_link">Work tasks</a>
+                        </li>
+                        <li>
+                            <a href="#counter" class="nav_link">Counter</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -69,10 +80,27 @@
             </form>
             <ol class="list"></ol>
         </section>
+        <section class="center list_wrap" id="counter">
+            <div>Timer</div>
+            <input type="number" name="counter_num" />
+            <button type="button" id="startCount">Start</button>
+            <button type="button" id="pauseCount">Pause</button>
+            <button type="button" id="resetCount">Reset Counter</button>
+            <div id="counter_output">0</div>
+
+            <div>Stopwatch</div>
+            <input type="number" name="stopwatch_num" />
+            <button type="button" id="startWatch">Start</button>
+            <button type="button" id="pauseWatch">Pause</button>
+            <button type="button" id="resetWatch">Reset Stopwatch</button>
+            <div id="stopwatch_output">0</div>
+        </section>
         <script src="js/modules/List.js"></script>
         <script src="js/modules/Item.js"></script>
         <script src="js/modules/WorkTask.js"></script>
         <script src="js/modules/ShoppingTask.js"></script>
+        <script src="js/modules/Counter.js"></script>
+        <script src="js/modules/Stopwatch.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

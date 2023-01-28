@@ -1,6 +1,6 @@
 class ShoppingTask extends Item {
-    constructor(text, url, id) {
-        super(text, id);
+    constructor(text, url) {
+        super(text);
         this.url = url;
     }
 }

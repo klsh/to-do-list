@@ -26,7 +26,7 @@ section {
 
 .header {
     padding: 15px;
-    background: rgb(100, 100, 200);
+    background: rgb(87, 100, 216);
     position: fixed;
     left: 0;
     top: 0;
@@ -79,15 +79,34 @@ section {
 }
 
 #homeTasks {
-    background: rgb(45, 187, 223);
+    background: lightblue;
 }
 
 #workTasks {
-    background: rgb(47, 34, 228);
+    background: lightgreen;
 }
 
 #shoppingList {
-    background: rgb(231, 220, 58);
+    background: lightpink;
+}
+
+#counter {
+    font-family: "Orbitron", sans-serif;
+    font-size: 36px;
+    background: lightgrey;
+}
+
+#counter div {
+    margin: 25px auto;
+}
+
+#counter button {
+    font-size: 18px;
+    padding: 5px;
+}
+
+#counter input {
+    height: 35px;
 }
 
 .list li {
